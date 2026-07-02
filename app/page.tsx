@@ -245,8 +245,8 @@ export default function LandingPage() {
                 Core Intelligence Engines
               </h2>
               <p className="font-body-lg text-body-lg text-secondary max-w-2xl mx-auto">
-                We don&apos;t just record calls; we decode them. Our proprietary AI analyzes every nuance
-                to give you a competitive edge.
+                We don&apos;t just record calls; we decode them. Our proprietary AI analyzes every
+                nuance to give you a competitive edge.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-gutter">
@@ -367,8 +367,8 @@ export default function LandingPage() {
                 </h2>
                 <p className="font-body-lg text-body-lg text-secondary mb-8">
                   Experience a UI that breathes. Talklytics uses expansiveness and crisp contrast to
-                  help you focus on what matters: the human connection. Our platform doesn&apos;t just
-                  work better; it feels better.
+                  help you focus on what matters: the human connection. Our platform doesn&apos;t
+                  just work better; it feels better.
                 </p>
                 <div className="space-y-4">
                   <div className="flex gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors">
@@ -447,8 +447,8 @@ export default function LandingPage() {
                 Talklytics
               </span>
               <p className="text-secondary font-body-md mb-6 pr-8">
-                The world&apos;s leading AI-powered conversation intelligence platform for modern sales
-                teams.
+                The world&apos;s leading AI-powered conversation intelligence platform for modern
+                sales teams.
               </p>
               <div className="flex gap-4">
                 <a
