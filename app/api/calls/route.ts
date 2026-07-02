@@ -1,10 +1,10 @@
 import { apiSuccess, apiError, handleApiCatch } from '@/shared/utils/api';
-import { 
-  calculateAverage, 
-  calculateDuration, 
-  determineDominantSentiment, 
-  evaluateBantCriteria, 
-  parseClientName 
+import {
+  calculateAverage,
+  calculateDuration,
+  determineDominantSentiment,
+  evaluateBantCriteria,
+  parseClientName,
 } from '@/features/calls/utils/metrics';
 
 export async function GET(request: Request) {
@@ -14,13 +14,17 @@ export async function GET(request: Request) {
     const limit = parseInt(searchParams.get('limit') || '10', 10);
     const query = searchParams.get('query') || '';
     const sentiment = searchParams.get('sentiment');
-    const minScore = searchParams.get('minScore') ? parseFloat(searchParams.get('minScore')!) : null;
+    const minScore = searchParams.get('minScore')
+      ? parseFloat(searchParams.get('minScore')!)
+      : null;
     const isFavorite = searchParams.get('isFavorite') === 'true' ? true : undefined;
     const sortBy = searchParams.get('sortBy') || 'date'; // 'date' | 'score' | 'duration' | 'title'
     const sortOrder = searchParams.get('sortOrder') || 'desc'; // 'asc' | 'desc'
 
     // Fetch calls from FastAPI backend. Fetch all to filter/compute locally for accurate pagination.
-    const backendUrl = new URL(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls`);
+    const backendUrl = new URL(
+      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls`
+    );
     backendUrl.searchParams.set('limit', '100000');
     backendUrl.searchParams.set('skip', '0');
     if (query) {
@@ -43,7 +47,7 @@ export async function GET(request: Request) {
 
     const res = await fetch(backendUrl.toString(), {
       headers,
-      next: { revalidate: 0 } // disable cache
+      next: { revalidate: 0 }, // disable cache
     });
 
     if (!res.ok) {
@@ -55,7 +59,7 @@ export async function GET(request: Request) {
     // Map backend calls to match the schema expected by the frontend
     let mappedCalls = backendCalls.map((call: any) => {
       const records = call.records || [];
-      
+
       // Calculate derived fields using extracted utility functions
       const duration = calculateDuration(records);
       const averageScore = calculateAverage(records, 'score');
@@ -94,7 +98,7 @@ export async function GET(request: Request) {
           name: 'Default Sales Rep',
           email: 'salesrep@talklytics.com',
           avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-        }
+        },
       };
     });
 
@@ -154,7 +158,7 @@ export async function POST(request: Request) {
 
     // Map Next.js format to FastAPI schema
     const backendUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls`;
-    
+
     const titleParam = clientName ? `${title} - ${clientName}` : title;
 
     const { cookies } = require('next/headers');
@@ -199,10 +203,13 @@ export async function POST(request: Request) {
     }
 
     const createdCall = await res.json();
-    return apiSuccess({
-      ...createdCall,
-      id: String(createdCall.id), // ensure id is string to maintain frontend compatibility
-    }, 201);
+    return apiSuccess(
+      {
+        ...createdCall,
+        id: String(createdCall.id), // ensure id is string to maintain frontend compatibility
+      },
+      201
+    );
   } catch (error: any) {
     return handleApiCatch(error);
   }

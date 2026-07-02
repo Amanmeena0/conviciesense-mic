@@ -15,17 +15,23 @@ export async function GET() {
     const res = await fetch(backendUrl, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 
     if (!res.ok) {
-      return NextResponse.json({ error: 'Failed to fetch active sessions' }, { status: res.status });
+      return NextResponse.json(
+        { error: 'Failed to fetch active sessions' },
+        { status: res.status }
+      );
     }
 
     const data = await res.json();
     return NextResponse.json(data);
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to fetch active sessions' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to fetch active sessions' },
+      { status: 500 }
+    );
   }
 }

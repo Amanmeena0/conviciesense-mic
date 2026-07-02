@@ -10,11 +10,11 @@ export function apiSuccess(data: any, status: number = 200) {
 /** Standardizes error format payload */
 export function apiError(message: string, status: number = 500, code?: string) {
   return NextResponse.json(
-    { 
-      error: message, 
+    {
+      error: message,
       code: code || 'API_ERROR',
-      success: false 
-    }, 
+      success: false,
+    },
     { status }
   );
 }

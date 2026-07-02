@@ -4,7 +4,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
   try {
     const { id } = await params;
     const callId = parseInt(id, 10);
-    
+
     const backendUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls/${callId}`;
     const { cookies } = require('next/headers');
     const cookieStore = await cookies();
@@ -19,7 +19,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     const res = await fetch(backendUrl, {
       headers,
-      next: { revalidate: 0 }
+      next: { revalidate: 0 },
     });
 
     if (!res.ok) {
@@ -38,12 +38,15 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
         name: 'Default Sales Rep',
         email: 'salesrep@talklytics.com',
         avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-      }
+      },
     }));
 
     return NextResponse.json(comments);
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to fetch comments' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to fetch comments' },
+      { status: 500 }
+    );
   }
 }
 
@@ -79,18 +82,21 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     }
 
     const comment = await res.json();
-    return NextResponse.json({
-      id: String(comment.id),
-      callId: String(comment.call_id),
-      content: comment.content,
-      createdAt: comment.created_at,
-      author: {
-        id: '1',
-        name: 'Default Sales Rep',
-        email: 'salesrep@talklytics.com',
-        avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-      }
-    }, { status: 201 });
+    return NextResponse.json(
+      {
+        id: String(comment.id),
+        callId: String(comment.call_id),
+        content: comment.content,
+        createdAt: comment.created_at,
+        author: {
+          id: '1',
+          name: 'Default Sales Rep',
+          email: 'salesrep@talklytics.com',
+          avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
+        },
+      },
+      { status: 201 }
+    );
   } catch (error: any) {
     return NextResponse.json({ error: error.message || 'Failed to post comment' }, { status: 500 });
   }

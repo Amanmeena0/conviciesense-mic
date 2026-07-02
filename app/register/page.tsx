@@ -48,7 +48,9 @@ export default function RegisterPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || 'Registration failed. The email might already be registered.');
+        throw new Error(
+          data.error || 'Registration failed. The email might already be registered.'
+        );
       }
 
       setSuccess('Account created successfully! Redirecting to login page...');
@@ -107,11 +109,16 @@ export default function RegisterPage() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <label className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider" htmlFor="name">
+            <label
+              className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider"
+              htmlFor="name"
+            >
               Full Name
             </label>
             <div className="relative">
-              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">person</span>
+              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">
+                person
+              </span>
               <input
                 id="name"
                 type="text"
@@ -126,11 +133,16 @@ export default function RegisterPage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider" htmlFor="email">
+            <label
+              className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider"
+              htmlFor="email"
+            >
               Work Email Address
             </label>
             <div className="relative">
-              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">mail</span>
+              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">
+                mail
+              </span>
               <input
                 id="email"
                 type="email"
@@ -145,11 +157,16 @@ export default function RegisterPage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider" htmlFor="password">
+            <label
+              className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider"
+              htmlFor="password"
+            >
               Password
             </label>
             <div className="relative">
-              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">lock</span>
+              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">
+                lock
+              </span>
               <input
                 id="password"
                 type="password"
@@ -164,11 +181,16 @@ export default function RegisterPage() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider" htmlFor="confirmPassword">
+            <label
+              className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider"
+              htmlFor="confirmPassword"
+            >
               Confirm Password
             </label>
             <div className="relative">
-              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">lock_reset</span>
+              <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">
+                lock_reset
+              </span>
               <input
                 id="confirmPassword"
                 type="password"

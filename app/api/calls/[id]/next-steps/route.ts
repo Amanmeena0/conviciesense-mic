@@ -4,7 +4,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
   try {
     const { id } = await params;
     const callId = parseInt(id, 10);
-    
+
     const backendUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls/${callId}`;
     const { cookies } = require('next/headers');
     const cookieStore = await cookies();
@@ -19,7 +19,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     const res = await fetch(backendUrl, {
       headers,
-      next: { revalidate: 0 }
+      next: { revalidate: 0 },
     });
 
     if (!res.ok) {
@@ -39,7 +39,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     return NextResponse.json(nextSteps);
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to fetch next steps' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to fetch next steps' },
+      { status: 500 }
+    );
   }
 }
 
@@ -77,17 +80,23 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     }
 
     const nextStep = await res.json();
-    return NextResponse.json({
-      id: String(nextStep.id),
-      callId: String(nextStep.call_id),
-      title: nextStep.content,
-      description: '',
-      isCompleted: nextStep.completed,
-      dueDate: nextStep.due_date,
-      createdAt: nextStep.created_at,
-    }, { status: 201 });
+    return NextResponse.json(
+      {
+        id: String(nextStep.id),
+        callId: String(nextStep.call_id),
+        title: nextStep.content,
+        description: '',
+        isCompleted: nextStep.completed,
+        dueDate: nextStep.due_date,
+        createdAt: nextStep.created_at,
+      },
+      { status: 201 }
+    );
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to create next step' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to create next step' },
+      { status: 500 }
+    );
   }
 }
 
@@ -168,6 +177,9 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       createdAt: nextStep.created_at,
     });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to update next step' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to update next step' },
+      { status: 500 }
+    );
   }
 }

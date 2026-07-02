@@ -1,17 +1,17 @@
 import { apiSuccess, apiError, handleApiCatch } from '@/shared/utils/api';
-import { 
-  calculateAverage, 
-  calculateDuration, 
-  determineDominantSentiment, 
-  evaluateBantCriteria, 
-  parseClientName 
+import {
+  calculateAverage,
+  calculateDuration,
+  determineDominantSentiment,
+  evaluateBantCriteria,
+  parseClientName,
 } from '@/features/calls/utils/metrics';
 
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
     const callId = parseInt(id, 10);
-    
+
     const backendUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls/${callId}`;
     const { cookies } = require('next/headers');
     const cookieStore = await cookies();
@@ -26,7 +26,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     const res = await fetch(backendUrl, {
       headers,
-      next: { revalidate: 0 }
+      next: { revalidate: 0 },
     });
 
     if (!res.ok) {
@@ -38,7 +38,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
 
     const call = await res.json();
     const records = call.records || [];
-    
+
     // Calculate fields dynamically using extracted utility functions
     const duration = calculateDuration(records);
     const averageScore = calculateAverage(records, 'score');
@@ -99,14 +99,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
           name: 'Default Sales Rep',
           email: 'salesrep@talklytics.com',
           avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-        }
+        },
       })),
       salesRep: {
         id: '1',
         name: 'Default Sales Rep',
         email: 'salesrep@talklytics.com',
         avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
-      }
+      },
     };
 
     return apiSuccess(formattedCall);

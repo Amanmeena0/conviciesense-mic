@@ -10,8 +10,8 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Determine if the route is protected or an auth page
-  const isProtectedPath = PROTECTED_PREFIXES.some(prefix => pathname.startsWith(prefix));
-  const isAuthPath = AUTH_PAGES.some(path => pathname === path);
+  const isProtectedPath = PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+  const isAuthPath = AUTH_PAGES.some((path) => pathname === path);
 
   // If not a protected path and not an auth path, let the request proceed normally
   if (!isProtectedPath && !isAuthPath) {
@@ -34,20 +34,20 @@ export async function middleware(request: NextRequest) {
         const refreshRes = await fetch(backendUrl, {
           method: 'POST',
           headers: {
-            'Cookie': `refresh_token=${refreshToken}`,
+            Cookie: `refresh_token=${refreshToken}`,
           },
         });
 
         if (refreshRes.ok) {
           // Token refresh succeeded!
           const response = NextResponse.next();
-          
+
           // Propagate Set-Cookie headers from backend response to the client response
           const setCookies = refreshRes.headers.getSetCookie();
           for (const cookie of setCookies) {
             response.headers.append('set-cookie', cookie);
           }
-          
+
           return response;
         }
       } catch (err) {
@@ -59,7 +59,7 @@ export async function middleware(request: NextRequest) {
     const loginUrl = new URL('/login', request.url);
     // Keep track of the original page to redirect back after successful login
     loginUrl.searchParams.set('redirect', pathname);
-    
+
     const response = NextResponse.redirect(loginUrl);
     // Clean up stale cookies if authentication failed
     response.cookies.set('access_token', '', { path: '/', maxAge: 0 });
@@ -81,7 +81,7 @@ export async function middleware(request: NextRequest) {
         const refreshRes = await fetch(backendUrl, {
           method: 'POST',
           headers: {
-            'Cookie': `refresh_token=${refreshToken}`,
+            Cookie: `refresh_token=${refreshToken}`,
           },
         });
 
@@ -112,6 +112,6 @@ export const config = {
     '/analytics/:path*',
     '/settings/:path*',
     '/login',
-    '/register'
-  ]
+    '/register',
+  ],
 };

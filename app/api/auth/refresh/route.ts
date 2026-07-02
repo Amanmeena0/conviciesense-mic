@@ -15,7 +15,7 @@ export async function POST() {
     const res = await fetch(backendUrl, {
       method: 'POST',
       headers: {
-        'Cookie': `refresh_token=${refreshToken}`,
+        Cookie: `refresh_token=${refreshToken}`,
       },
     });
 

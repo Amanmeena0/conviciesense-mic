@@ -7,7 +7,10 @@ export async function GET() {
     const store = await readStore();
     return NextResponse.json(store.apiKeys);
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to fetch API keys' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to fetch API keys' },
+      { status: 500 }
+    );
   }
 }
 
@@ -27,7 +30,7 @@ export async function POST(request: Request) {
       userId: '1',
       name,
       key: rawKey,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
 
     store.apiKeys.push(newKey);
@@ -35,7 +38,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json(newKey, { status: 201 });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to generate API key' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to generate API key' },
+      { status: 500 }
+    );
   }
 }
 
@@ -58,6 +64,9 @@ export async function DELETE(request: Request) {
 
     return NextResponse.json({ success: true, message: 'API key successfully revoked' });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to revoke API key' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to revoke API key' },
+      { status: 500 }
+    );
   }
 }

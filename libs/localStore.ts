@@ -7,7 +7,7 @@ const defaultData = {
   integrations: [
     { id: '1', name: 'Slack', connected: false, config: '{}' },
     { id: '2', name: 'Salesforce', connected: false, config: '{}' },
-    { id: '3', name: 'HubSpot', connected: false, config: '{}' }
+    { id: '3', name: 'HubSpot', connected: false, config: '{}' },
   ],
   apiKeys: [] as any[],
   notifications: [
@@ -18,9 +18,9 @@ const defaultData = {
       description: 'Your real-time AI sales pipeline monitor is ready.',
       type: 'SUCCESS',
       read: false,
-      createdAt: new Date().toISOString()
-    }
-  ]
+      createdAt: new Date().toISOString(),
+    },
+  ],
 };
 
 export async function readStore() {

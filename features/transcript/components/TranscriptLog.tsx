@@ -79,26 +79,20 @@ export default function TranscriptLog() {
               >
                 Comments
                 {comments.length > 0 && (
-                  <span className="transcript-log-count">
-                    {comments.length}
-                  </span>
+                  <span className="transcript-log-count">{comments.length}</span>
                 )}
               </button>
             )}
           </div>
 
-          {status === 'connected' && (
-            <span className="transcript-live-dot" />
-          )}
+          {status === 'connected' && <span className="transcript-live-dot" />}
         </div>
 
         {/* Filters and search */}
         {activeTab === 'transcript' && (
           <div className="transcript-log-filters">
             <div className="search-input transcript-search-input">
-              <span className="material-symbols-outlined">
-                search
-              </span>
+              <span className="material-symbols-outlined">search</span>
               <input
                 placeholder="Search transcript..."
                 type="text"
@@ -146,18 +140,11 @@ export default function TranscriptLog() {
                     : '?';
 
                   return (
-                    <div
-                      key={record.id || i}
-                      className="transcript-entry transcript-entry-animate"
-                    >
-                      <div className={`transcript-avatar ${avatarClass}`}>
-                        {initials}
-                      </div>
+                    <div key={record.id || i} className="transcript-entry transcript-entry-animate">
+                      <div className={`transcript-avatar ${avatarClass}`}>{initials}</div>
                       <div className="transcript-entry-body">
                         <div className="transcript-entry-meta">
-                          <span className="transcript-speaker">
-                            {record.speaker}
-                          </span>
+                          <span className="transcript-speaker">{record.speaker}</span>
                           <span className="text-caption">{formatTime(record.timestamp)}</span>
 
                           {/* Sentiment badge */}
@@ -174,9 +161,7 @@ export default function TranscriptLog() {
                           </span>
 
                           {/* Score indicator */}
-                          <span className="transcript-score">
-                            Score: {record.score}/5
-                          </span>
+                          <span className="transcript-score">Score: {record.score}/5</span>
 
                           {/* Timestamp tag link */}
                           {!isLive && (
@@ -195,20 +180,24 @@ export default function TranscriptLog() {
                             </button>
                           )}
                         </div>
-                        <p className="text-body transcript-transcript-text">
-                          {record.transcript}
-                        </p>
+                        <p className="text-body transcript-transcript-text">{record.transcript}</p>
 
                         {/* Buying signals & hesitations */}
                         {(record.buying_signals.length > 0 || record.hesitations.length > 0) && (
                           <div className="transcript-signals">
                             {record.buying_signals.map((signal, j) => (
-                              <span key={`buy-${j}`} className="transcript-signal-chip transcript-signal-chip--positive">
+                              <span
+                                key={`buy-${j}`}
+                                className="transcript-signal-chip transcript-signal-chip--positive"
+                              >
                                 🟢 {signal}
                               </span>
                             ))}
                             {record.hesitations.map((h, j) => (
-                              <span key={`hes-${j}`} className="transcript-signal-chip transcript-signal-chip--warning">
+                              <span
+                                key={`hes-${j}`}
+                                className="transcript-signal-chip transcript-signal-chip--warning"
+                              >
                                 ⚠️ {h}
                               </span>
                             ))}
@@ -226,9 +215,7 @@ export default function TranscriptLog() {
             </div>
           ) : (
             <div className="transcript-empty-state">
-              <span className="material-symbols-outlined transcript-empty-state-icon">
-                mic
-              </span>
+              <span className="material-symbols-outlined transcript-empty-state-icon">mic</span>
               <p className="transcript-empty-state-title">
                 {status === 'connecting'
                   ? 'Connecting to backend...'
@@ -253,10 +240,7 @@ export default function TranscriptLog() {
                 {commentTimestamp !== null && (
                   <span className="transcript-comment-link">
                     Linked to segment {formatTime(commentTimestamp)}
-                    <button
-                      type="button"
-                      onClick={() => setCommentTimestamp(null)}
-                    >
+                    <button type="button" onClick={() => setCommentTimestamp(null)}>
                       <span className="material-symbols-outlined transcript-comment-link-icon">
                         close
                       </span>
@@ -286,10 +270,7 @@ export default function TranscriptLog() {
             <div className="transcript-comment-list">
               {comments.length > 0 ? (
                 comments.map((comment: any) => (
-                  <div
-                    key={comment.id}
-                    className="transcript-comment-entry"
-                  >
+                  <div key={comment.id} className="transcript-comment-entry">
                     <div className="transcript-comment-avatar">
                       <img
                         src={
@@ -302,9 +283,7 @@ export default function TranscriptLog() {
                     </div>
                     <div className="transcript-comment-card">
                       <div className="transcript-comment-card-header">
-                        <span className="transcript-comment-author">
-                          {comment.author?.name}
-                        </span>
+                        <span className="transcript-comment-author">{comment.author?.name}</span>
                         <div className="d-flex align-center gap-8px">
                           {comment.timestamp !== null && (
                             <span className="transcript-comment-link-time">
@@ -316,9 +295,7 @@ export default function TranscriptLog() {
                           </span>
                         </div>
                       </div>
-                      <p className="text-body transcript-comment-content">
-                        {comment.content}
-                      </p>
+                      <p className="text-body transcript-comment-content">{comment.content}</p>
                     </div>
                   </div>
                 ))

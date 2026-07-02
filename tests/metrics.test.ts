@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { 
-  calculateAverage, 
-  calculateDuration, 
-  determineDominantSentiment, 
-  evaluateBantCriteria, 
-  parseClientName 
+import {
+  calculateAverage,
+  calculateDuration,
+  determineDominantSentiment,
+  evaluateBantCriteria,
+  parseClientName,
 } from '@/features/calls/utils/metrics';
 
 describe('Metrics Utilities', () => {
@@ -15,19 +15,12 @@ describe('Metrics Utilities', () => {
     });
 
     it('calculates average score correctly', () => {
-      const records = [
-        { score: 3.5 },
-        { score: 4.5 },
-        { score: 1.0 }
-      ];
+      const records = [{ score: 3.5 }, { score: 4.5 }, { score: 1.0 }];
       expect(calculateAverage(records, 'score')).toBe(3.0);
     });
 
     it('handles decimal precision formatting', () => {
-      const records = [
-        { score: 4.123 },
-        { score: 4.567 }
-      ];
+      const records = [{ score: 4.123 }, { score: 4.567 }];
       expect(calculateAverage(records, 'score')).toBe(4.35); // (4.123 + 4.567) / 2 = 4.345 -> 4.35
     });
   });
@@ -38,11 +31,7 @@ describe('Metrics Utilities', () => {
     });
 
     it('finds maximum timestamp correctly', () => {
-      const records = [
-        { timestamp: 12 },
-        { timestamp: 120 },
-        { timestamp: 45 }
-      ];
+      const records = [{ timestamp: 12 }, { timestamp: 120 }, { timestamp: 45 }];
       expect(calculateDuration(records)).toBe(120);
     });
   });
@@ -57,7 +46,7 @@ describe('Metrics Utilities', () => {
         { sentiment: 'Positive' },
         { sentiment: 'Neutral' },
         { sentiment: 'Positive' },
-        { sentiment: 'Negative' }
+        { sentiment: 'Negative' },
       ];
       expect(determineDominantSentiment(records)).toBe('Positive');
     });
@@ -72,20 +61,26 @@ describe('Metrics Utilities', () => {
     });
 
     it('identifies authority keywords', () => {
-      const records = [{ transcript: 'I need to get approval from the decision maker.', detected_intents: [] }];
+      const records = [
+        { transcript: 'I need to get approval from the decision maker.', detected_intents: [] },
+      ];
       const result = evaluateBantCriteria(records);
       expect(result.bantAuthorityMet).toBe(true);
       expect(result.bantAuthority).toBe('Commitment Signals Found');
     });
 
     it('identifies need keywords', () => {
-      const records = [{ transcript: 'We have a strong need for integration.', detected_intents: [] }];
+      const records = [
+        { transcript: 'We have a strong need for integration.', detected_intents: [] },
+      ];
       const result = evaluateBantCriteria(records);
       expect(result.bantNeedMet).toBe(true);
     });
 
     it('identifies timeline keywords', () => {
-      const records = [{ transcript: 'We are looking to schedule a launch timeline.', detected_intents: [] }];
+      const records = [
+        { transcript: 'We are looking to schedule a launch timeline.', detected_intents: [] },
+      ];
       const result = evaluateBantCriteria(records);
       expect(result.bantTimelineMet).toBe(true);
     });

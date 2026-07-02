@@ -21,7 +21,7 @@ export async function POST() {
     });
 
     const response = NextResponse.json({ success: true, message: 'Logged out successfully.' });
-    
+
     // Explicitly clear all session cookies
     response.cookies.set('access_token', '', { path: '/', maxAge: 0 });
     response.cookies.set('refresh_token', '', { path: '/', maxAge: 0 });

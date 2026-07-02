@@ -32,7 +32,9 @@ export default function Sidebar() {
       {/* Live Monitor Section */}
       <div className="sidebar-section">
         <Link href="/calls/live" className="no-underline">
-          <div className={`sidebar-item sidebar-live-item ${pathname === '/calls/live' ? 'active' : ''}`}>
+          <div
+            className={`sidebar-item sidebar-live-item ${pathname === '/calls/live' ? 'active' : ''}`}
+          >
             <span className={`pulse-dot ${liveCallAvailable ? '' : 'is-idle'}`} />
             <div>
               <div className="sidebar-live-title">Live Monitor</div>

@@ -106,23 +106,23 @@ export default function SessionHeader({ id }: SessionHeaderProps) {
           {isLive ? (
             isRecording && <ConnectionIndicator />
           ) : (
-            <span className="badge session-header-id-badge">
-              ID: {id?.substring(0, 8)}...
-            </span>
+            <span className="badge session-header-id-badge">ID: {id?.substring(0, 8)}...</span>
           )}
 
           {hasData && (
             <span className="text-caption session-header-segments">
-              <span className="material-symbols-outlined fs-14">
-                schedule
-              </span>
+              <span className="material-symbols-outlined fs-14">schedule</span>
               {records.length} segments • {formatDuration(sessionDuration)}
             </span>
           )}
         </div>
 
         <h1 className="text-page-title session-header-title">
-          {isLive ? (isRecording ? (sessionTitle || 'Live Session') : 'Live Call Monitor') : (title || 'Call Report')}
+          {isLive
+            ? isRecording
+              ? sessionTitle || 'Live Session'
+              : 'Live Call Monitor'
+            : title || 'Call Report'}
           {!isLive && (
             <button
               onClick={handleFavoriteClick}
@@ -142,7 +142,9 @@ export default function SessionHeader({ id }: SessionHeaderProps) {
         <p className="text-body session-header-subtitle">
           {isLive ? (
             isRecording && sessionClientName ? (
-              <span>Active coaching session for: <strong>{sessionClientName}</strong></span>
+              <span>
+                Active coaching session for: <strong>{sessionClientName}</strong>
+              </span>
             ) : (
               'Real-time AI-powered conversation coaching'
             )
@@ -159,7 +161,11 @@ export default function SessionHeader({ id }: SessionHeaderProps) {
         {isLive && isRecording && stopSession && (
           <button
             onClick={async () => {
-              if (confirm('Are you sure you want to stop this live coaching session and save it to history?')) {
+              if (
+                confirm(
+                  'Are you sure you want to stop this live coaching session and save it to history?'
+                )
+              ) {
                 await stopSession();
               }
             }}
@@ -176,9 +182,7 @@ export default function SessionHeader({ id }: SessionHeaderProps) {
             className="btn btn-secondary session-header-delete-btn"
             disabled={isDeleting}
           >
-            <span className="material-symbols-outlined fs-18">
-              delete
-            </span>
+            <span className="material-symbols-outlined fs-18">delete</span>
             Delete Call
           </button>
         )}

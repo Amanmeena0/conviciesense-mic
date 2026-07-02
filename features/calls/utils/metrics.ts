@@ -32,13 +32,13 @@ export function calculateDuration(records: any[]): number {
 /** Determines dominant sentiment value based on occurrence frequency */
 export function determineDominantSentiment(records: any[]): string {
   if (!records || records.length === 0) return 'Neutral';
-  
+
   const freq: Record<string, number> = {};
   records.forEach((r: any) => {
     const s = r.sentiment || 'Neutral';
     freq[s] = (freq[s] || 0) + 1;
   });
-  
+
   let max = 0;
   let dominant = 'Neutral';
   Object.entries(freq).forEach(([k, v]) => {
@@ -47,7 +47,7 @@ export function determineDominantSentiment(records: any[]): string {
       dominant = k;
     }
   });
-  
+
   return dominant;
 }
 
@@ -62,7 +62,7 @@ export function evaluateBantCriteria(records: any[]): BantAssessment {
     records.forEach((r: any) => {
       const txt = (r.transcript || '').toLowerCase();
       const intents = (r.detected_intents || []).map((i: string) => i.toUpperCase());
-      
+
       if (intents.includes('PRICING') || txt.includes('price') || txt.includes('budget')) {
         bantBudgetMet = true;
       }
@@ -94,13 +94,13 @@ export function evaluateBantCriteria(records: any[]): BantAssessment {
 export function parseClientName(title: string): ClientTitleInfo {
   let clientName = 'Prospective Client';
   let displayTitle = title || '';
-  
+
   if (title && title.includes(' - ')) {
     const parts = title.split(' - ');
     displayTitle = parts[0];
     clientName = parts.slice(1).join(' - ');
   }
-  
+
   return {
     title: displayTitle,
     clientName,

@@ -78,11 +78,16 @@ function LoginForm() {
       {/* Form */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <div className="flex flex-col gap-1.5">
-          <label className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider" htmlFor="email">
+          <label
+            className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider"
+            htmlFor="email"
+          >
             Work Email Address
           </label>
           <div className="relative">
-            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">mail</span>
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">
+              mail
+            </span>
             <input
               id="email"
               type="email"
@@ -98,15 +103,27 @@ function LoginForm() {
 
         <div className="flex flex-col gap-1.5">
           <div className="flex justify-between items-center">
-            <label className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider" htmlFor="password">
+            <label
+              className="text-label-bold font-semibold text-secondary text-xs uppercase tracking-wider"
+              htmlFor="password"
+            >
               Password
             </label>
-            <a href="#" className="text-xs text-primary hover:underline font-semibold" onClick={(e) => { e.preventDefault(); alert('Please register a new account if you forgot your credentials.'); }}>
+            <a
+              href="#"
+              className="text-xs text-primary hover:underline font-semibold"
+              onClick={(e) => {
+                e.preventDefault();
+                alert('Please register a new account if you forgot your credentials.');
+              }}
+            >
               Forgot password?
             </a>
           </div>
           <div className="relative">
-            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">lock</span>
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/60 text-lg">
+              lock
+            </span>
             <input
               id="password"
               type="password"
@@ -188,12 +205,14 @@ export default function LoginPage() {
         </span>
       </div>
 
-      <Suspense fallback={
-        <div className="loading-state-container">
-          <div className="pulse-dot pulse-dot-large" />
-          <p className="text-body mt-4">Loading login terminal...</p>
-        </div>
-      }>
+      <Suspense
+        fallback={
+          <div className="loading-state-container">
+            <div className="pulse-dot pulse-dot-large" />
+            <p className="text-body mt-4">Loading login terminal...</p>
+          </div>
+        }
+      >
         <LoginForm />
       </Suspense>
     </div>

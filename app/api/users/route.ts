@@ -23,7 +23,7 @@ const users = [
     email: 'admin@talklytics.com',
     role: 'ADMIN',
     avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150',
-  }
+  },
 ];
 
 export async function GET(request: Request) {
@@ -39,7 +39,7 @@ export async function GET(request: Request) {
         const res = await fetch(backendUrl, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${accessToken}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         });
 
@@ -96,4 +96,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error.message || 'Failed to switch user' }, { status: 500 });
   }
 }
-

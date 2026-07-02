@@ -139,7 +139,10 @@ export default function Header() {
           </span>
         </Link>
         <nav className="d-flex align-center gap-6">
-          <Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>
+          <Link
+            href="/dashboard"
+            className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}
+          >
             Dashboard
           </Link>
           <Link
@@ -292,7 +295,13 @@ export default function Header() {
                 <button
                   onClick={handleLogout}
                   className="header-user-settings-link border-none bg-none cursor-pointer w-full text-left color-error hover:bg-surface-container-high"
-                  style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', borderRadius: '8px' }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 12px',
+                    borderRadius: '8px',
+                  }}
                 >
                   <span className="material-symbols-outlined fs-16">logout</span>
                   Sign Out

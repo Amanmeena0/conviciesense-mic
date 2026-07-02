@@ -6,7 +6,10 @@ export async function GET() {
     const store = await readStore();
     return NextResponse.json(store.notifications);
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to fetch notifications' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to fetch notifications' },
+      { status: 500 }
+    );
   }
 }
 
@@ -41,6 +44,9 @@ export async function PATCH(request: Request) {
 
     return NextResponse.json(store.notifications[notifIndex]);
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to update notification' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to update notification' },
+      { status: 500 }
+    );
   }
 }

@@ -3,7 +3,9 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   try {
     // Fetch calls from FastAPI backend.
-    const backendUrl = new URL(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls`);
+    const backendUrl = new URL(
+      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/calls`
+    );
     backendUrl.searchParams.set('limit', '100000');
     backendUrl.searchParams.set('skip', '0');
 
@@ -20,7 +22,7 @@ export async function GET() {
 
     const res = await fetch(backendUrl.toString(), {
       headers,
-      next: { revalidate: 0 }
+      next: { revalidate: 0 },
     });
 
     if (!res.ok) {
@@ -65,7 +67,7 @@ export async function GET() {
 
       const callScoreSum = records.reduce((sum: number, r: any) => sum + r.score, 0);
       const callAvgScore = records.length > 0 ? callScoreSum / records.length : 0;
-      
+
       totalScoreSum += callScoreSum;
       totalRecordsCount += records.length;
 
@@ -85,7 +87,7 @@ export async function GET() {
           }
         });
       }
-      
+
       if (overallSentiment in sentimentSplit) {
         sentimentSplit[overallSentiment] += 1;
       }
@@ -95,10 +97,18 @@ export async function GET() {
       records.forEach((r: any) => {
         const txt = r.transcript.toLowerCase();
         const intentsList = (r.detected_intents || []).map((i: string) => i.toUpperCase());
-        if (intentsList.includes('PRICING') || txt.includes('price') || txt.includes('budget')) isBant = true;
-        if (txt.includes('decision') || txt.includes('approve') || txt.includes('authority')) isBant = true;
-        if (intentsList.includes('INFORMATION') || txt.includes('need') || txt.includes('want')) isBant = true;
-        if (intentsList.includes('COMMITMENT') || txt.includes('timeline') || txt.includes('schedule')) isBant = true;
+        if (intentsList.includes('PRICING') || txt.includes('price') || txt.includes('budget'))
+          isBant = true;
+        if (txt.includes('decision') || txt.includes('approve') || txt.includes('authority'))
+          isBant = true;
+        if (intentsList.includes('INFORMATION') || txt.includes('need') || txt.includes('want'))
+          isBant = true;
+        if (
+          intentsList.includes('COMMITMENT') ||
+          txt.includes('timeline') ||
+          txt.includes('schedule')
+        )
+          isBant = true;
 
         // Count intents
         intentsList.forEach((intent: string) => {
@@ -128,9 +138,8 @@ export async function GET() {
     });
 
     const totalDurationMinutes = Math.round(totalDurationSeconds / 60);
-    const averageScore = totalRecordsCount > 0 
-      ? parseFloat((totalScoreSum / totalRecordsCount).toFixed(2))
-      : 0;
+    const averageScore =
+      totalRecordsCount > 0 ? parseFloat((totalScoreSum / totalRecordsCount).toFixed(2)) : 0;
     const averageConversionProbability = Math.round(
       scoreTrend.reduce((sum: number, s: any) => sum + s.probability, 0) / totalCalls
     );
@@ -149,6 +158,9 @@ export async function GET() {
       totalHesitations,
     });
   } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to compute analytics' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Failed to compute analytics' },
+      { status: 500 }
+    );
   }
 }

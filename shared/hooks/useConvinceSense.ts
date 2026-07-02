@@ -132,7 +132,6 @@ export function useConvinceSense(wsUrl: string | null = null): UseConvinceSenseR
     };
   }, [connect, wsUrl]);
 
-
   // ── Derived aggregates ─────────────────────────────────────────────────
   const averageScore = useMemo(() => {
     if (records.length === 0) return 0;

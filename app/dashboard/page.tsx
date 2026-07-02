@@ -168,7 +168,7 @@ export default function DashboardHome() {
           <div className="grid-dashboard">
             {/* Recent Calls */}
             <div className="card-flush lg:col-span-8">
-                <div className="d-flex justify-between align-center p-4 gap-4 dashboard-section-header">
+              <div className="d-flex justify-between align-center p-4 gap-4 dashboard-section-header">
                 <h2 className="text-section-heading m-0 d-flex align-center gap-8px">
                   <span className="material-symbols-outlined fs-20 color-accent">history</span>
                   Recent Conversation Records
@@ -199,7 +199,7 @@ export default function DashboardHome() {
                         >
                           <td className="dashboard-table-td" onClick={(e) => e.stopPropagation()}>
                             <button
-                               onClick={() => handleToggleFavorite(call.id, call.isFavorite)}
+                              onClick={() => handleToggleFavorite(call.id, call.isFavorite)}
                               className={`dashboard-star-btn ${call.isFavorite ? 'is-favorite' : ''}`}
                             >
                               <span

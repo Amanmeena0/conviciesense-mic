@@ -51,7 +51,8 @@ function LiveCallContent() {
             <div className="pulse-dot pulse-dot-large mb-4" />
             <h3 className="text-section-heading mb-2 color-primary">Analyzing Conversation</h3>
             <p className="text-body text-center color-secondary max-w-300px">
-              Generating LLM executive summary and saving call session details to history. Please hold...
+              Generating LLM executive summary and saving call session details to history. Please
+              hold...
             </p>
           </div>
         </div>
@@ -128,8 +129,8 @@ function LiveCallContent() {
                     Generate LLM summary and save records to database automatically.
                   </span>
                 </div>
-                  <label className="switch">
-                    <span className="sr-only">Auto-Summarize on Stop</span>
+                <label className="switch">
+                  <span className="sr-only">Auto-Summarize on Stop</span>
                   <input
                     type="checkbox"
                     checked={autoSum}
@@ -147,7 +148,8 @@ function LiveCallContent() {
                     FastAPI server not reachable
                   </p>
                   <p className="fs-12 color-secondary m-0">
-                    To start, run the following command in your terminal to spin up the python backend:
+                    To start, run the following command in your terminal to spin up the python
+                    backend:
                   </p>
                   <div className="live-call-cmd-box mt-2 font-mono">
                     uvicorn src.api.app:app --host 127.0.0.1 --port 8000 --reload

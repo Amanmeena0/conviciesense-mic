@@ -43,7 +43,7 @@ function SettingsContent() {
       const [userRes, integrationsRes, keysRes] = await Promise.all([
         clientFetch('/api/users'),
         clientFetch('/api/integrations'),
-        clientFetch('/api/notifications'), 
+        clientFetch('/api/notifications'),
       ]);
 
       if (userRes.ok) {
@@ -277,7 +277,7 @@ function SettingsContent() {
                     <div>
                       <h4 className="m-0 fs-16 font-semibold">{user?.name}</h4>
                       <p className="text-caption mt-1 mb-2">{user?.email}</p>
-                        <span className="badge badge-accent fs-10 settings-role-badge">
+                      <span className="badge badge-accent fs-10 settings-role-badge">
                         {user?.role}
                       </span>
                     </div>
@@ -446,7 +446,6 @@ function SettingsContent() {
                             showBanner('Key copied to clipboard!');
                           }}
                           className="btn btn-ghost"
-                          
                         >
                           Copy
                         </button>
@@ -497,9 +496,7 @@ export default function SettingsPage() {
           <main className="main-content">
             <div className="content-container">
               <h1 className="text-page-title">Settings &amp; Integrations</h1>
-              <p className="text-body color-secondary">
-                Loading configurations...
-              </p>
+              <p className="text-body color-secondary">Loading configurations...</p>
             </div>
             <Footer />
           </main>

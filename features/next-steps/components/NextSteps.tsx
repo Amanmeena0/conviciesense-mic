@@ -245,9 +245,7 @@ Best regards,`;
       {/* AI Follow-Up Draft */}
       <div className="ai-draft-card">
         <div className="d-flex align-center gap-2 mb-3">
-          <span
-            className="material-symbols-outlined color-accent fs-20 next-steps-mail-icon"
-          >
+          <span className="material-symbols-outlined color-accent fs-20 next-steps-mail-icon">
             mail
           </span>
           <span className="text-overline color-accent">

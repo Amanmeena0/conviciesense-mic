@@ -20,8 +20,11 @@ export async function POST() {
       console.warn('Failed to contact backend for logout-all, clearing local session anyway:', err);
     });
 
-    const response = NextResponse.json({ success: true, message: 'Logged out of all devices successfully.' });
-    
+    const response = NextResponse.json({
+      success: true,
+      message: 'Logged out of all devices successfully.',
+    });
+
     // Explicitly clear all session cookies
     response.cookies.set('access_token', '', { path: '/', maxAge: 0 });
     response.cookies.set('refresh_token', '', { path: '/', maxAge: 0 });
