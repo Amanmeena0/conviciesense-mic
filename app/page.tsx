@@ -32,22 +32,23 @@ export default function LandingPage() {
       <header className="bg-surface/90 backdrop-blur-md docked full-width top-0 z-50 sticky shadow-sm dark:shadow-none shadow-[0px_4px_20px_rgba(15,23,42,0.05)] border-b border-surface-container-high">
         <div className="flex justify-between items-center w-full px-container-padding max-w-[1280px] mx-auto h-20">
           <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-2xl">lens_blur</span>
             <span className="font-title text-headline-lg font-extrabold text-on-background tracking-tighter">
-              ConvinceSense
+              Talklytics
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <Link className="font-label-bold text-label-bold text-primary border-b-2 border-primary pb-1 no-underline" href="#">
-              Product
+            <Link className="font-label-bold text-label-bold text-secondary hover:text-primary transition-colors duration-200 no-underline" href="/dashboard">
+              Dashboard
             </Link>
-            <Link className="font-label-bold text-label-bold text-secondary hover:text-primary transition-colors duration-200 no-underline" href="#">
-              Solutions
+            <Link className="font-label-bold text-label-bold text-secondary hover:text-primary transition-colors duration-200 no-underline" href="/calls">
+              Recordings
             </Link>
-            <Link className="font-label-bold text-label-bold text-secondary hover:text-primary transition-colors duration-200 no-underline" href="#">
-              Pricing
+            <Link className="font-label-bold text-label-bold text-secondary hover:text-primary transition-colors duration-200 no-underline" href="/analytics">
+              Analytics
             </Link>
-            <Link className="font-label-bold text-label-bold text-secondary hover:text-primary transition-colors duration-200 no-underline" href="#">
-              About
+            <Link className="font-label-bold text-label-bold text-secondary hover:text-primary transition-colors duration-200 no-underline" href="/settings">
+              Settings
             </Link>
           </nav>
           <div className="flex items-center gap-4">
@@ -300,7 +301,7 @@ export default function LandingPage() {
               <div className="md:w-1/2">
                 <h2 className="font-title text-headline-xl text-on-background mb-6">Designed for Growth Optimism</h2>
                 <p className="font-body-lg text-body-lg text-secondary mb-8">
-                  Experience a UI that breathes. ConvinceSense uses expansiveness and crisp contrast to help you focus on what matters: the human connection. Our platform doesn't just work better; it feels better.
+                  Experience a UI that breathes. Talklytics uses expansiveness and crisp contrast to help you focus on what matters: the human connection. Our platform doesn't just work better; it feels better.
                 </p>
                 <div className="space-y-4">
                   <div className="flex gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors">
@@ -335,7 +336,7 @@ export default function LandingPage() {
             <div className="relative z-10">
               <h2 className="font-title text-headline-xl text-white mb-6">Ready to close smarter?</h2>
               <p className="font-body-lg text-body-lg text-surface-container-high max-w-xl mx-auto mb-10">
-                Join the next generation of sales leaders who use ConvinceSense to turn every conversation into a conversion.
+                Join the next generation of sales leaders who use Talklytics to turn every conversation into a conversion.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link href="/dashboard" className="bg-primary-container text-on-primary-container font-label-bold text-label-bold px-10 py-5 rounded-2xl hover:opacity-90 transition-all uppercase tracking-wider no-underline text-center">
@@ -357,7 +358,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-12">
             <div className="col-span-2 md:col-span-1">
               <span className="font-title text-headline-lg-mobile font-bold text-primary mb-6 block">
-                ConvinceSense
+                Talklytics
               </span>
               <p className="text-secondary font-body-md mb-6 pr-8">
                 The world's leading AI-powered conversation intelligence platform for modern sales teams.
@@ -401,7 +402,7 @@ export default function LandingPage() {
           </div>
           <div className="pt-8 border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-label-sm text-label-sm text-secondary">
-              © 2024 ConvinceSense AI. Growth through intelligence.
+              © 2024 Talklytics AI. Growth through intelligence.
             </p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>

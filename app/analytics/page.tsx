@@ -97,7 +97,7 @@ export default function AnalyticsPage() {
     const blob = new Blob([headers + rows], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.setAttribute('download', 'convincesense-analytics.csv');
+    link.setAttribute('download', 'talklytics-analytics.csv');
     document.body.appendChild(link);
     link.click();
     link.remove();

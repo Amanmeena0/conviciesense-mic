@@ -88,14 +88,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
         author: {
           id: '1',
           name: 'Default Sales Rep',
-          email: 'salesrep@convincesense.com',
+          email: 'salesrep@talklytics.com',
           avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
         }
       })),
       salesRep: {
         id: '1',
         name: 'Default Sales Rep',
-        email: 'salesrep@convincesense.com',
+        email: 'salesrep@talklytics.com',
         avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
       }
     };

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ConvinceSense — AI Sales Intelligence',
+  title: 'Talklytics — AI Sales Intelligence',
   description:
     'AI-powered post-call analysis dashboard for modern sales teams. Get instant insights, BANT scoring, and automated follow-ups.',
 };

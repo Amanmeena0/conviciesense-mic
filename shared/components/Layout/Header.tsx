@@ -123,11 +123,11 @@ export default function Header() {
         <Link href="/" className="no-underline">
           <span className="header-brand-text">
             <span className="material-symbols-outlined color-accent fs-20">lens_blur</span>
-            ConvinceSense
+            Talklytics
           </span>
         </Link>
         <nav className="d-flex align-center gap-6">
-          <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>
+          <Link href="/dashboard" className={`nav-link ${pathname === '/dashboard' ? 'active' : ''}`}>
             Dashboard
           </Link>
           <Link
@@ -244,21 +244,21 @@ export default function Header() {
               <div className="d-flex flex-col gap-1">
                 <div className="header-user-demo-title">SWITCH ROLE (DEMO)</div>
                 <button
-                  onClick={() => handleSwitchUser('jane.smith@convincesense.com')}
+                  onClick={() => handleSwitchUser('jane.smith@talklytics.com')}
                   className={`header-user-demo-btn ${currentUser?.role === 'SALES_REP' ? 'is-active' : ''}`}
                 >
                   <span className="material-symbols-outlined fs-16">person</span>
                   Jane Smith (Sales Rep)
                 </button>
                 <button
-                  onClick={() => handleSwitchUser('manager@convincesense.com')}
+                  onClick={() => handleSwitchUser('manager@talklytics.com')}
                   className={`header-user-demo-btn ${currentUser?.role === 'MANAGER' ? 'is-active' : ''}`}
                 >
                   <span className="material-symbols-outlined fs-16">supervisor_account</span>
                   Sarah Connor (Manager)
                 </button>
                 <button
-                  onClick={() => handleSwitchUser('admin@convincesense.com')}
+                  onClick={() => handleSwitchUser('admin@talklytics.com')}
                   className={`header-user-demo-btn ${currentUser?.role === 'ADMIN' ? 'is-active' : ''}`}
                 >
                   <span className="material-symbols-outlined fs-16">admin_panel_settings</span>

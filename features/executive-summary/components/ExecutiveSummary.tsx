@@ -22,7 +22,7 @@ export default function ExecutiveSummary() {
     ? `Session in progress with ${records.length} segment${records.length > 1 ? 's' : ''} analyzed. ` +
       `The dominant sentiment is ${dominantSentiment} with an average engagement score of ${averageScore.toFixed(1)}/5. ` +
       (latestRecommendation ? `Latest AI recommendation: "${latestRecommendation}"` : '')
-    : 'Waiting for live data from the ConvinceSense backend. Ensure the microphone session is active and the backend server is running.';
+    : 'Waiting for live data from the Talklytics backend. Ensure the microphone session is active and the backend server is running.';
 
   // Determine sentiment display
   const sentimentColor =

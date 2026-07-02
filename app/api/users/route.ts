@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 const defaultUser = {
   id: '1',
   name: 'Jane Smith',
-  email: 'jane.smith@convincesense.com',
+  email: 'jane.smith@talklytics.com',
   role: 'SALES_REP',
   avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
 };
@@ -13,14 +13,14 @@ const users = [
   {
     id: '2',
     name: 'Michael Scott',
-    email: 'michael.scott@convincesense.com',
+    email: 'michael.scott@talklytics.com',
     role: 'MANAGER',
     avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150',
   },
   {
     id: '3',
     name: 'Admin User',
-    email: 'admin@convincesense.com',
+    email: 'admin@talklytics.com',
     role: 'ADMIN',
     avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150',
   }
@@ -31,7 +31,7 @@ export async function GET(request: Request) {
     const { cookies } = require('next/headers');
     const cookieStore = await cookies();
     const activeUserEmail =
-      cookieStore.get('active_user_email')?.value || 'jane.smith@convincesense.com';
+      cookieStore.get('active_user_email')?.value || 'jane.smith@talklytics.com';
 
     const user = users.find((u) => u.email === activeUserEmail) || defaultUser;
     return NextResponse.json(user);

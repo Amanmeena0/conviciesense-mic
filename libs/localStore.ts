@@ -14,7 +14,7 @@ const defaultData = {
     {
       id: 'init-notif',
       userId: '1',
-      title: 'Welcome to ConvinceSense',
+      title: 'Welcome to Talklytics',
       description: 'Your real-time AI sales pipeline monitor is ready.',
       type: 'SUCCESS',
       read: false,

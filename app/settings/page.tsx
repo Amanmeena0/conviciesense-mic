@@ -294,21 +294,21 @@ function SettingsContent() {
                     </p>
                     <div className="d-flex gap-12px flex-wrap">
                       <button
-                        onClick={() => handleSwitchUser('jane.smith@convincesense.com')}
+                        onClick={() => handleSwitchUser('jane.smith@talklytics.com')}
                         className="btn btn-secondary flex-1"
                       >
                         {' '}
                         Jane Smith (Sales Rep){' '}
                       </button>
                       <button
-                        onClick={() => handleSwitchUser('manager@convincesense.com')}
+                        onClick={() => handleSwitchUser('manager@talklytics.com')}
                         className="btn btn-secondary flex-1"
                       >
                         {' '}
                         Sarah Connor (Manager){' '}
                       </button>
                       <button
-                        onClick={() => handleSwitchUser('admin@convincesense.com')}
+                        onClick={() => handleSwitchUser('admin@talklytics.com')}
                         className="btn btn-secondary flex-1"
                       >
                         {' '}
